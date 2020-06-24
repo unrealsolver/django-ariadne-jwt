@@ -15,7 +15,7 @@ from .exceptions import (
 
 ORIGINAL_IAT_CLAIM = "orig_iat"
 HTTP_AUTHORIZATION_HEADER = "HTTP_AUTHORIZATION"
-AUTHORIZATION_HEADER_PREFIX = "Token"
+AUTHORIZATION_HEADER_PREFIX = "Bearer"  # "Token"
 
 
 def get_token_from_http_header(request):

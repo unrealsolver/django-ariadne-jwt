@@ -7,14 +7,14 @@ def login_required(resolver):
     """Requires login for a resolver"""
 
     def wrapper(parent, info, *args, **kwargs):
-        if isinstance(info.context, HttpRequest):
-            user = getattr(info.context, "user", None)
+        request = info.context["request"]
+        user = request.user
 
-            if user is not None and user.is_authenticated:
-                resolved = resolver(parent, info, *args, **kwargs)
+        if user is not None and user.is_authenticated:
+            resolved = resolver(parent, info, *args, **kwargs)
 
-            else:
-                raise LoginRequiredError()
+        else:
+            raise LoginRequiredError()
 
         return resolved
 

@@ -11,7 +11,7 @@ class JSONWebTokenMiddleware(object):
 
     def resolve(self, next, root, info, **kwargs):
         """Performs the middleware relevant operations"""
-        request = info.context
+        request = info.context["request"]
 
         token = get_token_from_http_header(request)
 

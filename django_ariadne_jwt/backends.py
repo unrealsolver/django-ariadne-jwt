@@ -22,7 +22,7 @@ class JSONWebTokenBackend(object):
 
             if token_data is not None:
                 User = get_user_model()
-                credentials = {User.USERNAME_FIELD: token_data["user"]}
+                credentials = {"pk": token_data["user_id"]}
 
                 try:
                     user = User.objects.get(**credentials)
